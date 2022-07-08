@@ -15,7 +15,7 @@ public class UserService {
 
 	@Autowired
 	private UserRepository repo;
-	
+
 	public List<User> findAll() {
 		return repo.findAll();
 	}
@@ -41,7 +41,11 @@ public class UserService {
 	}
 
 	private void updateData(User newObj, User obj) {
-        newObj.setName(obj.getName());
-        newObj.setEmail(obj.getEmail());
-    }
+		newObj.setName(obj.getName());
+		newObj.setEmail(obj.getEmail());
+	}
+
+	public User fromDTO(User objDto) {
+		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
+	}
 }
